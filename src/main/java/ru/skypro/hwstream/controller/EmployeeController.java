@@ -9,6 +9,7 @@ import ru.skypro.hwstream.service.Employee;
 import ru.skypro.hwstream.service.EmployeeService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/departments")
@@ -53,8 +54,8 @@ public class EmployeeController {
     }
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Employee>> getAllEmployeesByDepartment() {
-        List<Employee> employees = employeeService.getAllEmployeesByDepartmentId();
+    public ResponseEntity<Map<Integer, List<Employee>>> getAllEmployeesByDepartment() {
+        Map<Integer, List<Employee>> employees = employeeService.getAllEmployeesByDepartmentId();
 
         if (employees.isEmpty()) {
             return ResponseEntity.noContent().build();
